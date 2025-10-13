@@ -444,27 +444,67 @@ async function handleBookingSubmit() {
     try {
         RentifyApp.showLoading();
         
-        const response = await RentifyApp.apiCall('bookings.php', {
-            method: 'POST',
-            body: JSON.stringify(data)
+        // Calculate pricing
+        const days = Math.ceil((returnDate - pickupDate) / (1000 * 60 * 60 * 24)) + 1;
+        const basePrice = window.currentCar.price_per_day * days;
+        const serviceFee = 25;
+        const discount = calculateDiscount(data.coupon_code, basePrice);
+        const totalAmount = basePrice + serviceFee - discount;
+        
+        // Store booking data for checkout
+        const bookingData = {
+            car_id: window.currentCar.id,
+            car_title: window.currentCar.title,
+            car_image: window.currentCar.images && window.currentCar.images.length > 0 ? window.currentCar.images[0] : 'images/placeholder-car.jpg',
+            pickup_date: data.pickup_date,
+            return_date: data.return_date,
+            pickup_time: data.pickup_time,
+            return_time: data.return_time,
+            base_price: basePrice,
+            service_fee: serviceFee,
+            discount: discount,
+            total_amount: totalAmount,
+            days: days
+        };
+        
+        // Store in localStorage
+        Object.entries(bookingData).forEach(([key, value]) => {
+            localStorage.setItem(`booking_${key}`, value);
         });
         
-        if (response.success) {
-            RentifyApp.showNotification('Booking created successfully!', 'success');
-            hideBookingForm();
-            
-            // Redirect to payment or dashboard
-            setTimeout(() => {
-                window.location.href = 'dashboard.html';
-            }, 2000);
-        } else {
-            RentifyApp.showNotification(response.message || 'Booking failed', 'error');
-        }
+        RentifyApp.showNotification('Redirecting to checkout...', 'success');
+        hideBookingForm();
+        
+        // Redirect to checkout page
+        setTimeout(() => {
+            window.location.href = 'checkout.html';
+        }, 1000);
+        
     } catch (error) {
         console.error('Booking error:', error);
-        RentifyApp.showNotification('Failed to create booking', 'error');
+        RentifyApp.showNotification('Failed to process booking', 'error');
     } finally {
         RentifyApp.hideLoading();
+    }
+}
+
+function calculateDiscount(couponCode, basePrice) {
+    if (!couponCode) return 0;
+    
+    // Mock coupon validation
+    const coupons = {
+        'WELCOME20': { type: 'percentage', value: 20, minAmount: 100 },
+        'SAVE50': { type: 'fixed', value: 50, minAmount: 200 },
+        'FIRST10': { type: 'percentage', value: 10, minAmount: 50 }
+    };
+    
+    const coupon = coupons[couponCode.toUpperCase()];
+    if (!coupon || basePrice < coupon.minAmount) return 0;
+    
+    if (coupon.type === 'percentage') {
+        return (basePrice * coupon.value) / 100;
+    } else {
+        return coupon.value;
     }
 }
 

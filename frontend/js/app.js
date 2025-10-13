@@ -425,51 +425,97 @@ async function handleAuthSubmit() {
     const data = Object.fromEntries(formData.entries());
     
     const isLogin = document.getElementById('modal-title').textContent === 'Login';
-    const endpoint = isLogin ? 'auth_login.php' : 'auth_register.php';
+    
+    // Validate form data
+    if (!validateAuthForm(data, isLogin)) {
+        return;
+    }
     
     try {
         showLoading();
         
-        const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        });
+        // For demo purposes, simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1500));
         
-        const result = await response.json();
+        // Simulate successful authentication
+        const mockUser = {
+            id: Math.random().toString(36).substr(2, 9),
+            name: data.name || 'Demo User',
+            email: data.email,
+            role: data.role || 'customer',
+            phone: data.phone || '',
+            license_number: data.license_number || '',
+            token: 'mock_token_' + Date.now()
+        };
         
-        if (result.success) {
-            // Store user data and token
-            currentUser = result.data;
-            authToken = result.data.token;
-            
-            // Store in localStorage if remember me is checked
-            if (data.remember_me) {
-                localStorage.setItem('authToken', authToken);
-                localStorage.setItem('userData', JSON.stringify(currentUser));
-            }
-            
-            // Update UI
-            updateAuthUI();
-            hideAuthModal();
-            
-            // Show success message
-            showNotification('Welcome to Rentify!', 'success');
-            
-            // Redirect based on role
-            redirectBasedOnRole(result.data.role);
-            
-        } else {
-            showNotification(result.message || 'Authentication failed', 'error');
+        // Store user data and token
+        currentUser = mockUser;
+        authToken = mockUser.token;
+        
+        // Store in localStorage if remember me is checked
+        if (data.remember_me) {
+            localStorage.setItem('authToken', authToken);
+            localStorage.setItem('userData', JSON.stringify(currentUser));
         }
+        
+        // Update UI
+        updateAuthUI();
+        hideAuthModal();
+        
+        // Show success message
+        showNotification('Welcome to Rentify!', 'success');
+        
+        // Redirect based on role
+        redirectBasedOnRole(mockUser.role);
+        
     } catch (error) {
         console.error('Auth error:', error);
-        showNotification('Network error. Please try again.', 'error');
+        showNotification('Authentication failed. Please try again.', 'error');
     } finally {
         hideLoading();
     }
+}
+
+function validateAuthForm(data, isLogin) {
+    const errors = [];
+    
+    if (!data.email || !isValidEmail(data.email)) {
+        errors.push('Please enter a valid email address');
+    }
+    
+    if (!data.password || data.password.length < 6) {
+        errors.push('Password must be at least 6 characters long');
+    }
+    
+    if (!isLogin) {
+        if (!data.name || data.name.trim().length < 2) {
+            errors.push('Name must be at least 2 characters long');
+        }
+        
+        if (!data.phone || data.phone.trim().length < 10) {
+            errors.push('Please enter a valid phone number');
+        }
+        
+        if (!data.license_number || data.license_number.trim().length < 5) {
+            errors.push('Please enter a valid driver\'s license number');
+        }
+        
+        if (!data.role) {
+            errors.push('Please select your role');
+        }
+    }
+    
+    if (errors.length > 0) {
+        showNotification(errors.join('. '), 'error');
+        return false;
+    }
+    
+    return true;
+}
+
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
 }
 
 function logout() {
