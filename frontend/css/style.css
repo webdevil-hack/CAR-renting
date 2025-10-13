@@ -1,18 +1,22 @@
 /* Rentify - Modern Car Rental Platform CSS */
 
-/* CSS Variables */
+/* CSS Variables - Dark Theme */
 :root {
-    /* Colors */
-    --primary-color: #00B894;
-    --secondary-color: #0984E3;
-    --accent-color: #FD9644;
-    --background-color: #FFFFFF;
-    --text-color: #2d3436;
-    --text-light: #636e72;
-    --border-color: #e9ecef;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --gradient-primary: linear-gradient(135deg, #00B894, #0984E3);
-    --gradient-accent: linear-gradient(135deg, #FD9644, #FF6B6B);
+    /* Colors - Dark Theme */
+    --primary-color: #00D4AA;
+    --secondary-color: #4A9EFF;
+    --accent-color: #FF6B35;
+    --background-color: #0A0A0A;
+    --surface-color: #1A1A1A;
+    --card-color: #2A2A2A;
+    --text-color: #FFFFFF;
+    --text-light: #B0B0B0;
+    --text-muted: #808080;
+    --border-color: #333333;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --gradient-primary: linear-gradient(135deg, #00D4AA, #4A9EFF);
+    --gradient-accent: linear-gradient(135deg, #FF6B35, #FF8E53);
+    --gradient-dark: linear-gradient(135deg, #1A1A1A, #2A2A2A);
     
     /* Typography */
     --font-primary: 'Poppins', sans-serif;
@@ -60,8 +64,10 @@ body {
     font-family: var(--font-secondary);
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--background-color);
+    background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%);
+    background-attachment: fixed;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 /* Typography */
@@ -231,16 +237,16 @@ a:hover {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
     transition: var(--transition-normal);
 }
 
 .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: var(--shadow-md);
+    background: rgba(26, 26, 26, 0.98);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .nav-container {
@@ -387,7 +393,27 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%);
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #0A0A0A, #1A1A1A, #2A2A2A);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 212, 170, 0.1) 0%, rgba(74, 158, 255, 0.1) 100%);
 }
 
 .hero-shapes {
@@ -408,27 +434,41 @@ a:hover {
 }
 
 .shape-1 {
-    width: 300px;
-    height: 300px;
-    top: 10%;
-    left: 10%;
+    width: 400px;
+    height: 400px;
+    top: 5%;
+    left: 5%;
     animation-delay: 0s;
 }
 
 .shape-2 {
-    width: 200px;
-    height: 200px;
-    top: 60%;
-    right: 10%;
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    right: 5%;
     animation-delay: 2s;
 }
 
 .shape-3 {
+    width: 200px;
+    height: 200px;
+    top: 20%;
+    right: 20%;
+    animation-delay: 4s;
+}
+
+.shape-4 {
     width: 150px;
     height: 150px;
-    top: 30%;
-    right: 30%;
-    animation-delay: 4s;
+    top: 70%;
+    left: 20%;
+    animation-delay: 6s;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 @keyframes float {
@@ -451,11 +491,25 @@ a:hover {
     margin-bottom: var(--spacing-xxl);
 }
 
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: rgba(0, 212, 170, 0.1);
+    border: 1px solid rgba(0, 212, 170, 0.3);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: 50px;
+    margin-bottom: var(--spacing-md);
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
 .hero-title {
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: 800;
     margin-bottom: var(--spacing-md);
     line-height: 1.1;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .gradient-text {
@@ -466,10 +520,36 @@ a:hover {
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     color: var(--text-light);
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto var(--spacing-lg);
+    line-height: 1.6;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    margin: var(--spacing-lg) 0;
+    flex-wrap: wrap;
+}
+
+.hero-stats .stat {
+    text-align: center;
+}
+
+.hero-stats .stat h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.hero-stats .stat p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
 }
 
 .hero-buttons {
@@ -485,19 +565,26 @@ a:hover {
 }
 
 .search-card {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
+    background: rgba(42, 42, 42, 0.9);
+    backdrop-filter: blur(20px);
     border-radius: var(--radius-lg);
     padding: var(--spacing-lg);
-    box-shadow: var(--shadow-lg);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .search-card h3 {
-    text-align: center;
-    margin-bottom: var(--spacing-md);
     color: var(--text-color);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
 }
+
+.search-card h3 i {
+    color: var(--primary-color);
+}
+
 
 .search-form {
     width: 100%;
@@ -571,7 +658,7 @@ a:hover {
 /* How It Works */
 .how-it-works {
     padding: var(--spacing-xxl) 0;
-    background: var(--background-color);
+    background: var(--surface-color);
 }
 
 .steps {
@@ -617,7 +704,142 @@ a:hover {
 /* Featured Cars */
 .featured-cars {
     padding: var(--spacing-xxl) 0;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: var(--background-color);
+}
+
+/* Why Choose Us Section */
+.why-choose-us {
+    padding: var(--spacing-xxl) 0;
+    background: var(--surface-color);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background: var(--card-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-normal);
+    border: 1px solid var(--border-color);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--spacing-md);
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+}
+
+.feature-card h3 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-color);
+}
+
+.feature-card p {
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* Statistics Section */
+.statistics {
+    padding: var(--spacing-xxl) 0;
+    background: var(--gradient-primary);
+    color: white;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    text-align: center;
+    padding: var(--spacing-lg);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: var(--spacing-xs);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+/* Newsletter Section */
+.newsletter {
+    padding: var(--spacing-xxl) 0;
+    background: var(--card-color);
+}
+
+.newsletter-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-xl);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.newsletter-text h2 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-color);
+}
+
+.newsletter-text p {
+    color: var(--text-light);
+    margin: 0;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex: 1;
+    max-width: 400px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--surface-color);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
 }
 
 .cars-grid {
@@ -628,17 +850,19 @@ a:hover {
 }
 
 .car-card {
-    background: white;
+    background: var(--card-color);
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-md);
     transition: var(--transition-normal);
     position: relative;
+    border: 1px solid var(--border-color);
 }
 
 .car-card:hover {
     transform: translateY(-10px);
     box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
 }
 
 .car-image {

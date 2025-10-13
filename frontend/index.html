@@ -71,22 +71,45 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-background">
+            <div class="hero-video">
+                <div class="hero-overlay"></div>
+            </div>
             <div class="hero-shapes">
                 <div class="shape shape-1"></div>
                 <div class="shape shape-2"></div>
                 <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
             </div>
         </div>
         <div class="hero-content">
             <div class="container">
                 <div class="hero-text" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="hero-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Premium Car Rental Service</span>
+                    </div>
                     <h1 class="hero-title">
                         Find Your Perfect
                         <span class="gradient-text">Ride</span>
+                        <br>in Minutes
                     </h1>
                     <p class="hero-subtitle">
-                        Experience premium car rental with Rentify. Choose from our wide selection of luxury and economy vehicles for your next adventure.
+                        Experience the ultimate car rental service with Rentify. Choose from our extensive collection of luxury, economy, and premium vehicles. Book instantly, drive confidently.
                     </p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <h3>500+</h3>
+                            <p>Happy Customers</p>
+                        </div>
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Car Models</p>
+                        </div>
+                        <div class="stat">
+                            <h3>24/7</h3>
+                            <p>Support</p>
+                        </div>
+                    </div>
                     <div class="hero-buttons">
                         <button class="btn btn-primary btn-large" onclick="window.location.href='cars.html'">
                             <i class="fas fa-search"></i>
@@ -100,19 +123,19 @@
                 </div>
                 <div class="hero-search" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
                     <div class="search-card">
-                        <h3>Search for Cars</h3>
+                        <h3><i class="fas fa-search"></i> Search for Cars</h3>
                         <form class="search-form" id="hero-search-form">
                             <div class="search-row">
                                 <div class="search-group">
-                                    <label>Location</label>
+                                    <label><i class="fas fa-map-marker-alt"></i> Location</label>
                                     <input type="text" placeholder="Enter city or location" id="search-location">
                                 </div>
                                 <div class="search-group">
-                                    <label>Pickup Date</label>
+                                    <label><i class="fas fa-calendar"></i> Pickup Date</label>
                                     <input type="date" id="search-pickup">
                                 </div>
                                 <div class="search-group">
-                                    <label>Return Date</label>
+                                    <label><i class="fas fa-calendar"></i> Return Date</label>
                                     <input type="date" id="search-return">
                                 </div>
                                 <button type="submit" class="btn btn-primary">
@@ -260,6 +283,70 @@
         </div>
     </section>
 
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Why Choose Rentify?</h2>
+                <p>Discover what makes us the preferred choice for car rentals</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>100% Secure</h3>
+                    <p>Your data and payments are protected with bank-level security</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support for all your needs</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Best Prices</h3>
+                    <p>Competitive pricing with no hidden fees or charges</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-car-side"></i>
+                    </div>
+                    <h3>Quality Cars</h3>
+                    <p>Well-maintained vehicles from trusted owners</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-number" data-count="1000">0</div>
+                    <div class="stat-label">Cars Available</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-number" data-count="5000">0</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">Cities Covered</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-number" data-count="99">0</div>
+                    <div class="stat-label">% Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
@@ -275,6 +362,27 @@
                         <i class="fas fa-phone"></i>
                         Contact Us
                     </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content" data-aos="fade-up">
+                <div class="newsletter-text">
+                    <h2>Stay Updated</h2>
+                    <p>Get the latest offers and updates delivered to your inbox</p>
+                </div>
+                <div class="newsletter-form">
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Subscribe
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
