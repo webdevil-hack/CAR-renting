@@ -1,0 +1,187 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  OWNER
+  ADMIN
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  ONGOING
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  REFUNDED
+  FAILED
+}
+
+enum PaymentProvider {
+  STRIPE
+  RAZORPAY
+}
+
+enum CouponType {
+  PERCENTAGE
+  FLAT
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  phone     String?
+  password  String
+  role      Role     @default(USER)
+  licenseNo String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  cars      Car[]
+  bookings  Booking[]
+  payments  Payment[]
+  coupons   Coupon[]
+
+  @@map("users")
+}
+
+model Car {
+  id           String  @id @default(uuid())
+  ownerId      String
+  title        String
+  brand        String
+  model        String
+  modelYear    Int
+  type         String
+  fuel         String
+  transmission String
+  seats        Int
+  pricePerDay  Float
+  pricePerHour Float?
+  locationCity String
+  locationLat  Float?
+  locationLng  Float?
+  images       String[] // Cloudinary URLs
+  specs        Json     // Additional specifications
+  isActive     Boolean  @default(true)
+  isAvailable  Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Relations
+  owner    User      @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  bookings Booking[]
+
+  @@map("cars")
+}
+
+model Booking {
+  id            String        @id @default(uuid())
+  userId        String
+  carId         String
+  startDate     DateTime
+  endDate       DateTime
+  pickupLocation String?
+  dropLocation  String?
+  totalAmount   Float
+  discountAmount Float        @default(0)
+  taxAmount     Float         @default(0)
+  insuranceAmount Float       @default(0)
+  extras        Json?         // Additional services
+  status        BookingStatus @default(PENDING)
+  paymentStatus PaymentStatus @default(PENDING)
+  notes         String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  // Relations
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  car     Car      @relation(fields: [carId], references: [id], onDelete: Cascade)
+  payment Payment?
+  coupon  Coupon?  @relation(fields: [couponId], references: [id])
+  couponId String?
+
+  @@map("bookings")
+}
+
+model Payment {
+  id          String         @id @default(uuid())
+  bookingId   String         @unique
+  provider    PaymentProvider
+  providerId  String         // Stripe payment intent ID or Razorpay order ID
+  amount      Float
+  currency    String         @default("USD")
+  status      String
+  metadata    Json?
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  // Relations
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId  String
+
+  @@map("payments")
+}
+
+model Coupon {
+  id          String     @id @default(uuid())
+  code        String     @unique
+  discount    Float
+  type        CouponType
+  minAmount   Float?
+  maxDiscount Float?
+  expiresAt   DateTime
+  usageLimit  Int?
+  usedCount   Int        @default(0)
+  isActive    Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  // Relations
+  createdBy User?      @relation(fields: [createdById], references: [id])
+  createdById String?
+  bookings  Booking[]
+
+  @@map("coupons")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@map("refresh_tokens")
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  title     String
+  message   String
+  type      String
+  isRead    Boolean  @default(false)
+  data      Json?
+  createdAt DateTime @default(now())
+
+  @@map("notifications")
+}
