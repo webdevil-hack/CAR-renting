@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Details - Rentify</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="car-loader">
+                <i class="fas fa-car"></i>
+            </div>
+            <h3>Rentify</h3>
+            <p>Loading car details...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-car"></i>
+                <span>Rentify</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="cars.html" class="nav-link">Cars</a>
+                <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-auth">
+                <button class="btn btn-outline" id="login-btn">Login</button>
+                <button class="btn btn-primary" id="register-btn">Register</button>
+                <div class="user-menu" id="user-menu" style="display: none;">
+                    <div class="user-info">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="user-name"></span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="user-dropdown">
+                        <a href="dashboard.html" class="dropdown-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                        <a href="profile.html" class="dropdown-item">
+                            <i class="fas fa-user"></i>
+                            Profile
+                        </a>
+                        <a href="#" class="dropdown-item" id="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Car Details Section -->
+    <section class="car-details">
+        <div class="container">
+            <div class="car-details-content">
+                <!-- Car Images -->
+                <div class="car-images" data-aos="fade-right">
+                    <div class="main-image">
+                        <img id="main-car-image" src="" alt="Car Image">
+                        <div class="image-overlay">
+                            <button class="btn btn-primary" id="view-gallery-btn">
+                                <i class="fas fa-images"></i>
+                                View Gallery
+                            </button>
+                        </div>
+                    </div>
+                    <div class="image-thumbnails" id="image-thumbnails">
+                        <!-- Thumbnails will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Car Info -->
+                <div class="car-info" data-aos="fade-left">
+                    <div class="car-header">
+                        <div class="car-title">
+                            <h1 id="car-title">Loading...</h1>
+                            <div class="car-rating" id="car-rating">
+                                <!-- Rating will be loaded dynamically -->
+                            </div>
+                        </div>
+                        <div class="car-price">
+                            <span class="price-amount" id="car-price">$0</span>
+                            <span class="price-period">per day</span>
+                        </div>
+                    </div>
+
+                    <div class="car-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-calendar"></i>
+                            <span id="car-year">Year</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-users"></i>
+                            <span id="car-seats">Seats</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-gas-pump"></i>
+                            <span id="car-fuel">Fuel Type</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-cog"></i>
+                            <span id="car-transmission">Transmission</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span id="car-mileage">Mileage</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="car-location">Location</span>
+                        </div>
+                    </div>
+
+                    <div class="car-description">
+                        <h3>Description</h3>
+                        <p id="car-description">Loading description...</p>
+                    </div>
+
+                    <div class="car-owner">
+                        <h3>Owner Information</h3>
+                        <div class="owner-info">
+                            <div class="owner-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="owner-details">
+                                <h4 id="owner-name">Owner Name</h4>
+                                <p id="owner-phone">Phone: Loading...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="car-actions">
+                        <button class="btn btn-outline" id="wishlist-btn">
+                            <i class="fas fa-heart"></i>
+                            Add to Wishlist
+                        </button>
+                        <button class="btn btn-primary" id="book-now-btn">
+                            <i class="fas fa-calendar-check"></i>
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form -->
+    <section class="booking-form-section" id="booking-form-section" style="display: none;">
+        <div class="container">
+            <div class="booking-form-content" data-aos="fade-up">
+                <div class="booking-form">
+                    <div class="form-header">
+                        <h2>Book This Car</h2>
+                        <button class="btn btn-outline" id="close-booking-form">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <form id="booking-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="pickup-date">Pickup Date</label>
+                                <input type="date" id="pickup-date" name="pickup_date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="return-date">Return Date</label>
+                                <input type="date" id="return-date" name="return_date" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="pickup-time">Pickup Time</label>
+                                <input type="time" id="pickup-time" name="pickup_time" value="10:00" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="return-time">Return Time</label>
+                                <input type="time" id="return-time" name="return_time" value="18:00" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="coupon-code">Coupon Code (Optional)</label>
+                            <div class="coupon-input">
+                                <input type="text" id="coupon-code" name="coupon_code" placeholder="Enter coupon code">
+                                <button type="button" class="btn btn-outline" id="apply-coupon">
+                                    Apply
+                                </button>
+                            </div>
+                        </div>
+                        <div class="booking-summary">
+                            <div class="summary-item">
+                                <span>Price per day:</span>
+                                <span id="summary-price-per-day">$0</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Number of days:</span>
+                                <span id="summary-days">0</span>
+                            </div>
+                            <div class="summary-item" id="discount-item" style="display: none;">
+                                <span>Discount:</span>
+                                <span id="summary-discount">-$0</span>
+                            </div>
+                            <div class="summary-total">
+                                <span>Total Amount:</span>
+                                <span id="summary-total">$0</span>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-large btn-full">
+                            <i class="fas fa-credit-card"></i>
+                            Proceed to Payment
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section" id="reviews-section">
+        <div class="container">
+            <div class="reviews-content" data-aos="fade-up">
+                <div class="reviews-header">
+                    <h2>Customer Reviews</h2>
+                    <div class="reviews-summary" id="reviews-summary">
+                        <!-- Reviews summary will be loaded dynamically -->
+                    </div>
+                </div>
+                <div class="reviews-list" id="reviews-list">
+                    <!-- Reviews will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Similar Cars Section -->
+    <section class="similar-cars">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Similar Cars</h2>
+                <p>You might also like these vehicles</p>
+            </div>
+            <div class="cars-grid" id="similar-cars">
+                <!-- Similar cars will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-car"></i>
+                        <span>Rentify</span>
+                    </div>
+                    <p>Your trusted partner for premium car rental services. Experience comfort, reliability, and exceptional service.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="cars.html">Browse Cars</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Customer Service</a></li>
+                        <li><a href="#">Safety Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@rentify.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Car Rental St, City, State 12345</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rentify. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modals -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Login</h2>
+                <button class="modal-close" id="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="auth-form">
+                    <div class="form-group" id="name-group" style="display: none;">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group" id="phone-group" style="display: none;">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group" id="license-group" style="display: none;">
+                        <label for="license_number">Driver's License Number</label>
+                        <input type="text" id="license_number" name="license_number" required>
+                    </div>
+                    <div class="form-group" id="role-group" style="display: none;">
+                        <label for="role">I want to</label>
+                        <select id="role" name="role" required>
+                            <option value="">Select option</option>
+                            <option value="customer">Rent cars</option>
+                            <option value="owner">List my cars</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group" id="remember-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="remember_me" name="remember_me">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" id="auth-submit">
+                        Login
+                    </button>
+                </form>
+                <div class="auth-switch">
+                    <p id="auth-switch-text">Don't have an account?</p>
+                    <button class="btn btn-link" id="auth-switch-btn">Register here</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Gallery Modal -->
+    <div id="gallery-modal" class="modal">
+        <div class="modal-content gallery-modal">
+            <div class="modal-header">
+                <h2>Car Gallery</h2>
+                <button class="modal-close" id="gallery-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="gallery-container">
+                    <div class="gallery-main">
+                        <img id="gallery-main-image" src="" alt="Car Image">
+                        <button class="gallery-nav gallery-prev" id="gallery-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="gallery-nav gallery-next" id="gallery-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="gallery-thumbnails" id="gallery-thumbnails">
+                        <!-- Gallery thumbnails will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/car-details.js"></script>
+</body>
+</html>
