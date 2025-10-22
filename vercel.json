@@ -6,8 +6,8 @@
       "use": "@vercel/static"
     },
     {
-      "src": "api/**/*.php",
-      "use": "@vercel/php"
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
