@@ -1,0 +1,16 @@
+{
+  "name": "my-vercel-project",
+  "version": "1.0.0",
+  "description": "A simple project deployed to Vercel",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo 'This is a static site - no server needed'",
+    "build": "echo 'No build step required for static site'"
+  },
+  "keywords": ["vercel", "static-site"],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.x"
+  }
+}

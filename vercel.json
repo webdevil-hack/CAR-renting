@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "name": "my-vercel-project",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "public": true
+}
