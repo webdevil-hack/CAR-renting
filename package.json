@@ -1,0 +1,14 @@
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "A simple project deployed to Vercel",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'No build step needed for static site'",
+    "start": "npx serve ."
+  },
+  "keywords": ["vercel", "static", "html"],
+  "author": "",
+  "license": "MIT"
+}
