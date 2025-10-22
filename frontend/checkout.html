@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Rentify</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="car-loader">
+                <i class="fas fa-car"></i>
+            </div>
+            <h3>Rentify</h3>
+            <p>Processing your booking...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-car"></i>
+                <span>Rentify</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="cars.html" class="nav-link">Cars</a>
+                <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-auth">
+                <div class="user-menu" id="user-menu">
+                    <div class="user-info">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="user-name">Loading...</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="user-dropdown">
+                        <a href="dashboard.html" class="dropdown-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                        <a href="profile.html" class="dropdown-item">
+                            <i class="fas fa-user"></i>
+                            Profile
+                        </a>
+                        <a href="#" class="dropdown-item" id="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <section class="checkout-section">
+        <div class="container">
+            <div class="checkout-header" data-aos="fade-up">
+                <h1>Complete Your Booking</h1>
+                <p>Review your details and proceed to payment</p>
+            </div>
+
+            <div class="checkout-content">
+                <!-- Booking Summary -->
+                <div class="booking-summary-card" data-aos="fade-right">
+                    <h3><i class="fas fa-car"></i> Booking Summary</h3>
+                    <div class="car-details">
+                        <div class="car-image">
+                            <img id="checkout-car-image" src="images/placeholder-car.jpg" alt="Car Image">
+                        </div>
+                        <div class="car-info">
+                            <h4 id="checkout-car-title">Car Title</h4>
+                            <p id="checkout-car-specs">Specifications</p>
+                            <div class="car-features">
+                                <span class="feature"><i class="fas fa-users"></i> <span id="checkout-seats">5</span> seats</span>
+                                <span class="feature"><i class="fas fa-gas-pump"></i> <span id="checkout-fuel">Petrol</span></span>
+                                <span class="feature"><i class="fas fa-cog"></i> <span id="checkout-transmission">Automatic</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-dates">
+                        <div class="date-item">
+                            <i class="fas fa-calendar-check"></i>
+                            <div>
+                                <strong>Pickup Date</strong>
+                                <p id="checkout-pickup-date">January 15, 2024</p>
+                            </div>
+                        </div>
+                        <div class="date-item">
+                            <i class="fas fa-calendar-times"></i>
+                            <div>
+                                <strong>Return Date</strong>
+                                <p id="checkout-return-date">January 20, 2024</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-breakdown">
+                        <h4>Pricing Breakdown</h4>
+                        <div class="price-item">
+                            <span>Base Price (5 days × $150/day)</span>
+                            <span id="checkout-base-price">$750.00</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Service Fee</span>
+                            <span>$25.00</span>
+                        </div>
+                        <div class="price-item discount" id="discount-row" style="display: none;">
+                            <span>Discount</span>
+                            <span id="checkout-discount">-$50.00</span>
+                        </div>
+                        <div class="price-item total">
+                            <span><strong>Total Amount</strong></span>
+                            <span id="checkout-total"><strong>$775.00</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Form -->
+                <div class="payment-form-card" data-aos="fade-left">
+                    <h3><i class="fas fa-credit-card"></i> Payment Details</h3>
+                    
+                    <form id="checkout-form">
+                        <!-- Personal Information -->
+                        <div class="form-section">
+                            <h4>Personal Information</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="full-name">Full Name</label>
+                                    <input type="text" id="full-name" name="full_name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="license">Driver's License</label>
+                                    <input type="text" id="license" name="license" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div class="form-section">
+                            <h4>Payment Method</h4>
+                            <div class="payment-methods">
+                                <label class="payment-method">
+                                    <input type="radio" name="payment_method" value="card" checked>
+                                    <div class="payment-option">
+                                        <i class="fas fa-credit-card"></i>
+                                        <span>Credit/Debit Card</span>
+                                    </div>
+                                </label>
+                                <label class="payment-method">
+                                    <input type="radio" name="payment_method" value="upi">
+                                    <div class="payment-option">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <span>UPI Payment</span>
+                                    </div>
+                                </label>
+                                <label class="payment-method">
+                                    <input type="radio" name="payment_method" value="netbanking">
+                                    <div class="payment-option">
+                                        <i class="fas fa-university"></i>
+                                        <span>Net Banking</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Card Details -->
+                        <div class="form-section" id="card-details">
+                            <h4>Card Information</h4>
+                            <div class="form-group">
+                                <label for="card-number">Card Number</label>
+                                <input type="text" id="card-number" name="card_number" placeholder="1234 5678 9012 3456" maxlength="19">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expiry">Expiry Date</label>
+                                    <input type="text" id="expiry" name="expiry" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="card-name">Name on Card</label>
+                                <input type="text" id="card-name" name="card_name" placeholder="John Doe">
+                            </div>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="form-section">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="terms.html" target="_blank">Terms and Conditions</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-large btn-full" id="pay-now-btn">
+                            <i class="fas fa-lock"></i>
+                            Pay Now - $775.00
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Processing Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content payment-modal">
+            <div class="payment-processing">
+                <div class="payment-icon">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <h3>Processing Payment</h3>
+                <p>Please wait while we process your payment...</p>
+                <div class="loading-spinner"></div>
+                <div class="payment-steps">
+                    <div class="step active">
+                        <i class="fas fa-check"></i>
+                        <span>Validating Details</span>
+                    </div>
+                    <div class="step">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span>Processing Payment</span>
+                    </div>
+                    <div class="step">
+                        <i class="fas fa-clock"></i>
+                        <span>Confirming Booking</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content success-modal">
+            <div class="success-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Payment Successful!</h3>
+                <p>Your booking has been confirmed. You will receive a confirmation email shortly.</p>
+                <div class="booking-details">
+                    <p><strong>Booking ID:</strong> #RNF2024001</p>
+                    <p><strong>Total Paid:</strong> $775.00</p>
+                </div>
+                <div class="success-actions">
+                    <button class="btn btn-primary" onclick="window.location.href='dashboard.html'">
+                        <i class="fas fa-tachometer-alt"></i>
+                        View Dashboard
+                    </button>
+                    <button class="btn btn-outline" onclick="window.location.href='cars.html'">
+                        <i class="fas fa-car"></i>
+                        Book Another Car
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-car"></i>
+                        <span>Rentify</span>
+                    </div>
+                    <p>Your trusted partner for premium car rental services. Experience comfort, reliability, and exceptional service.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="cars.html">Browse Cars</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Customer Service</a></li>
+                        <li><a href="#">Safety Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@rentify.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Car Rental St, City, State 12345</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rentify. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

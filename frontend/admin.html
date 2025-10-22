@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Rentify</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="car-loader">
+                <i class="fas fa-car"></i>
+            </div>
+            <h3>Rentify</h3>
+            <p>Loading admin dashboard...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-car"></i>
+                <span>Rentify</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="cars.html" class="nav-link">Cars</a>
+                <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-auth">
+                <div class="user-menu" id="user-menu">
+                    <div class="user-info">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="user-name">Loading...</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="user-dropdown">
+                        <a href="admin.html" class="dropdown-item active">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Admin Dashboard
+                        </a>
+                        <a href="profile.html" class="dropdown-item">
+                            <i class="fas fa-user"></i>
+                            Profile
+                        </a>
+                        <a href="#" class="dropdown-item" id="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Dashboard Content -->
+    <div class="dashboard">
+        <div class="dashboard-sidebar" id="dashboard-sidebar">
+            <div class="sidebar-content">
+                <div class="sidebar-header">
+                    <h3>Admin Dashboard</h3>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="#overview" class="sidebar-link active" data-section="overview">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Overview</span>
+                    </a>
+                    <a href="#users" class="sidebar-link" data-section="users">
+                        <i class="fas fa-users"></i>
+                        <span>Users</span>
+                    </a>
+                    <a href="#cars" class="sidebar-link" data-section="cars">
+                        <i class="fas fa-car"></i>
+                        <span>Cars</span>
+                    </a>
+                    <a href="#bookings" class="sidebar-link" data-section="bookings">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Bookings</span>
+                    </a>
+                    <a href="#payments" class="sidebar-link" data-section="payments">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Payments</span>
+                    </a>
+                    <a href="#coupons" class="sidebar-link" data-section="coupons">
+                        <i class="fas fa-tag"></i>
+                        <span>Coupons</span>
+                    </a>
+                    <a href="#analytics" class="sidebar-link" data-section="analytics">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="dashboard-main">
+            <!-- Overview Section -->
+            <div class="dashboard-section active" id="overview-section">
+                <div class="section-header">
+                    <h1>Admin Dashboard</h1>
+                    <p>Manage your car rental platform</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-customers">0</h3>
+                            <p>Total Customers</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-owners">0</h3>
+                            <p>Car Owners</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-cars">0</h3>
+                            <p>Total Cars</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-bookings">0</h3>
+                            <p>Total Bookings</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-revenue">$0</h3>
+                            <p>Total Revenue</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="confirmed-bookings">0</h3>
+                            <p>Confirmed Bookings</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-content">
+                    <div class="content-grid">
+                        <div class="content-card" data-aos="fade-up" data-aos-delay="700">
+                            <div class="card-header">
+                                <h3>Recent Bookings</h3>
+                                <a href="#bookings" class="btn btn-link">View All</a>
+                            </div>
+                            <div class="card-content">
+                                <div class="bookings-list" id="recent-bookings">
+                                    <!-- Recent bookings will be loaded dynamically -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content-card" data-aos="fade-up" data-aos-delay="800">
+                            <div class="card-header">
+                                <h3>Recent Users</h3>
+                                <a href="#users" class="btn btn-link">View All</a>
+                            </div>
+                            <div class="card-content">
+                                <div class="users-list" id="recent-users">
+                                    <!-- Recent users will be loaded dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Section -->
+            <div class="dashboard-section" id="users-section">
+                <div class="section-header">
+                    <h1>Users Management</h1>
+                    <p>Manage platform users</p>
+                </div>
+
+                <div class="users-filters">
+                    <div class="filter-group">
+                        <label>Role</label>
+                        <select id="user-role-filter">
+                            <option value="">All Roles</option>
+                            <option value="customer">Customers</option>
+                            <option value="owner">Car Owners</option>
+                            <option value="admin">Admins</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Search</label>
+                        <input type="text" id="user-search" placeholder="Search by name or email">
+                    </div>
+                    <button class="btn btn-primary" id="filter-users">
+                        <i class="fas fa-search"></i>
+                        Search
+                    </button>
+                </div>
+
+                <div class="users-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Phone</th>
+                                <th>Joined</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table-body">
+                            <!-- Users will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Cars Section -->
+            <div class="dashboard-section" id="cars-section">
+                <div class="section-header">
+                    <h1>Cars Management</h1>
+                    <p>Manage all car listings</p>
+                </div>
+
+                <div class="cars-filters">
+                    <div class="filter-group">
+                        <label>Status</label>
+                        <select id="car-status-filter">
+                            <option value="">All Status</option>
+                            <option value="available">Available</option>
+                            <option value="unavailable">Unavailable</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Brand</label>
+                        <select id="car-brand-filter">
+                            <option value="">All Brands</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Search</label>
+                        <input type="text" id="car-search" placeholder="Search cars">
+                    </div>
+                    <button class="btn btn-primary" id="filter-cars">
+                        <i class="fas fa-search"></i>
+                        Search
+                    </button>
+                </div>
+
+                <div class="cars-grid" id="admin-cars-grid">
+                    <!-- Admin cars will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Bookings Section -->
+            <div class="dashboard-section" id="bookings-section">
+                <div class="section-header">
+                    <h1>Bookings Management</h1>
+                    <p>Manage all bookings</p>
+                </div>
+
+                <div class="bookings-filters">
+                    <div class="filter-group">
+                        <label>Status</label>
+                        <select id="booking-status-filter">
+                            <option value="">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="cancelled">Cancelled</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Date Range</label>
+                        <input type="date" id="booking-date-from">
+                        <span>to</span>
+                        <input type="date" id="booking-date-to">
+                    </div>
+                    <button class="btn btn-primary" id="filter-bookings">
+                        <i class="fas fa-filter"></i>
+                        Apply Filters
+                    </button>
+                </div>
+
+                <div class="bookings-list" id="admin-bookings">
+                    <!-- Admin bookings will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Payments Section -->
+            <div class="dashboard-section" id="payments-section">
+                <div class="section-header">
+                    <h1>Payments</h1>
+                    <p>Track payment transactions</p>
+                </div>
+
+                <div class="payments-content">
+                    <div class="payments-stats">
+                        <div class="payment-stat">
+                            <h3>Total Revenue</h3>
+                            <div class="stat-amount" id="total-revenue-amount">$0</div>
+                        </div>
+                        <div class="payment-stat">
+                            <h3>This Month</h3>
+                            <div class="stat-amount" id="monthly-revenue">$0</div>
+                        </div>
+                        <div class="payment-stat">
+                            <h3>Completed Payments</h3>
+                            <div class="stat-amount" id="completed-payments">0</div>
+                        </div>
+                    </div>
+
+                    <div class="payments-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Transaction ID</th>
+                                    <th>Booking ID</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="payments-table-body">
+                                <!-- Payments will be loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coupons Section -->
+            <div class="dashboard-section" id="coupons-section">
+                <div class="section-header">
+                    <h1>Coupons Management</h1>
+                    <p>Create and manage discount coupons</p>
+                </div>
+
+                <div class="coupons-actions">
+                    <button class="btn btn-primary" id="create-coupon-btn">
+                        <i class="fas fa-plus"></i>
+                        Create Coupon
+                    </button>
+                </div>
+
+                <div class="coupons-list" id="coupons-list">
+                    <!-- Coupons will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Analytics Section -->
+            <div class="dashboard-section" id="analytics-section">
+                <div class="section-header">
+                    <h1>Analytics</h1>
+                    <p>Platform performance insights</p>
+                </div>
+
+                <div class="analytics-content">
+                    <div class="analytics-charts">
+                        <div class="chart-card">
+                            <h3>Monthly Revenue</h3>
+                            <div class="chart-container" id="revenue-chart">
+                                <!-- Revenue chart will be loaded dynamically -->
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Car Types Distribution</h3>
+                            <div class="chart-container" id="car-types-chart">
+                                <!-- Car types chart will be loaded dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-car"></i>
+                        <span>Rentify</span>
+                    </div>
+                    <p>Your trusted partner for premium car rental services. Experience comfort, reliability, and exceptional service.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="cars.html">Browse Cars</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Customer Service</a></li>
+                        <li><a href="#">Safety Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@rentify.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Car Rental St, City, State 12345</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rentify. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Create Coupon Modal -->
+    <div id="create-coupon-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Coupon</h2>
+                <button class="modal-close" id="close-coupon-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="create-coupon-form">
+                    <div class="form-group">
+                        <label for="coupon-code">Coupon Code</label>
+                        <input type="text" id="coupon-code" name="code" placeholder="e.g., WELCOME20" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="coupon-type">Discount Type</label>
+                            <select id="coupon-type" name="discount_type" required>
+                                <option value="">Select Type</option>
+                                <option value="percentage">Percentage</option>
+                                <option value="fixed">Fixed Amount</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="coupon-value">Discount Value</label>
+                            <input type="number" id="coupon-value" name="discount_value" min="0" step="0.01" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="coupon-min-amount">Minimum Amount</label>
+                            <input type="number" id="coupon-min-amount" name="min_amount" min="0" step="0.01" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="coupon-max-discount">Max Discount (for %)</label>
+                            <input type="number" id="coupon-max-discount" name="max_discount" min="0" step="0.01">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="coupon-expires">Expires At</label>
+                        <input type="datetime-local" id="coupon-expires" name="expires_at">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancel-coupon">
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Create Coupon
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

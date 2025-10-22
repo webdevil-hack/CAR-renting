@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Rentify</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="car-loader">
+                <i class="fas fa-car"></i>
+            </div>
+            <h3>Rentify</h3>
+            <p>Loading dashboard...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-car"></i>
+                <span>Rentify</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="cars.html" class="nav-link">Cars</a>
+                <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-auth">
+                <div class="user-menu" id="user-menu">
+                    <div class="user-info">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="user-name">Loading...</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="user-dropdown">
+                        <a href="dashboard.html" class="dropdown-item active">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                        <a href="profile.html" class="dropdown-item">
+                            <i class="fas fa-user"></i>
+                            Profile
+                        </a>
+                        <a href="#" class="dropdown-item" id="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard">
+        <div class="dashboard-sidebar" id="dashboard-sidebar">
+            <div class="sidebar-content">
+                <div class="sidebar-header">
+                    <h3>Dashboard</h3>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="#overview" class="sidebar-link active" data-section="overview">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Overview</span>
+                    </a>
+                    <a href="#bookings" class="sidebar-link" data-section="bookings">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>My Bookings</span>
+                    </a>
+                    <a href="#wishlist" class="sidebar-link" data-section="wishlist">
+                        <i class="fas fa-heart"></i>
+                        <span>Wishlist</span>
+                    </a>
+                    <a href="#profile" class="sidebar-link" data-section="profile">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                    <a href="#settings" class="sidebar-link" data-section="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="dashboard-main">
+            <!-- Overview Section -->
+            <div class="dashboard-section active" id="overview-section">
+                <div class="section-header">
+                    <h1>Welcome back, <span id="welcome-name">User</span>!</h1>
+                    <p>Here's what's happening with your account</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-bookings">0</h3>
+                            <p>Total Bookings</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="active-bookings">0</h3>
+                            <p>Active Bookings</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="wishlist-count">0</h3>
+                            <p>Wishlist Items</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-spent">$0</h3>
+                            <p>Total Spent</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-content">
+                    <div class="content-grid">
+                        <div class="content-card" data-aos="fade-up" data-aos-delay="500">
+                            <div class="card-header">
+                                <h3>Recent Bookings</h3>
+                                <a href="#bookings" class="btn btn-link">View All</a>
+                            </div>
+                            <div class="card-content">
+                                <div class="bookings-list" id="recent-bookings">
+                                    <!-- Recent bookings will be loaded dynamically -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content-card" data-aos="fade-up" data-aos-delay="600">
+                            <div class="card-header">
+                                <h3>Wishlist</h3>
+                                <a href="#wishlist" class="btn btn-link">View All</a>
+                            </div>
+                            <div class="card-content">
+                                <div class="wishlist-preview" id="wishlist-preview">
+                                    <!-- Wishlist preview will be loaded dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bookings Section -->
+            <div class="dashboard-section" id="bookings-section">
+                <div class="section-header">
+                    <h1>My Bookings</h1>
+                    <p>Manage your car rental bookings</p>
+                </div>
+
+                <div class="bookings-filters">
+                    <div class="filter-group">
+                        <label>Status</label>
+                        <select id="booking-status-filter">
+                            <option value="">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="cancelled">Cancelled</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Date Range</label>
+                        <input type="date" id="booking-date-from">
+                        <span>to</span>
+                        <input type="date" id="booking-date-to">
+                    </div>
+                    <button class="btn btn-primary" id="filter-bookings">
+                        <i class="fas fa-filter"></i>
+                        Apply Filters
+                    </button>
+                </div>
+
+                <div class="bookings-list" id="all-bookings">
+                    <!-- All bookings will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Wishlist Section -->
+            <div class="dashboard-section" id="wishlist-section">
+                <div class="section-header">
+                    <h1>My Wishlist</h1>
+                    <p>Cars you've saved for later</p>
+                </div>
+
+                <div class="wishlist-grid" id="wishlist-grid">
+                    <!-- Wishlist items will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Profile Section -->
+            <div class="dashboard-section" id="profile-section">
+                <div class="section-header">
+                    <h1>My Profile</h1>
+                    <p>Manage your personal information</p>
+                </div>
+
+                <div class="profile-content">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="profile-info">
+                                <h3 id="profile-name">Loading...</h3>
+                                <p id="profile-email">Loading...</p>
+                            </div>
+                            <button class="btn btn-outline" id="edit-profile-btn">
+                                <i class="fas fa-edit"></i>
+                                Edit Profile
+                            </button>
+                        </div>
+                        <div class="profile-details">
+                            <div class="detail-item">
+                                <label>Phone Number</label>
+                                <span id="profile-phone">Loading...</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Driver's License</label>
+                                <span id="profile-license">Loading...</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Member Since</label>
+                                <span id="profile-joined">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-form" id="profile-form" style="display: none;">
+                        <h3>Edit Profile</h3>
+                        <form id="update-profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="edit-name">Full Name</label>
+                                    <input type="text" id="edit-name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-phone">Phone Number</label>
+                                    <input type="tel" id="edit-phone" name="phone" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-license">Driver's License Number</label>
+                                <input type="text" id="edit-license" name="license_number" required>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline" id="cancel-edit-profile">
+                                    Cancel
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i>
+                                    Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="dashboard-section" id="settings-section">
+                <div class="section-header">
+                    <h1>Settings</h1>
+                    <p>Manage your account preferences</p>
+                </div>
+
+                <div class="settings-content">
+                    <div class="settings-card">
+                        <h3>Account Settings</h3>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Change Password</h4>
+                                <p>Update your account password</p>
+                            </div>
+                            <button class="btn btn-outline" id="change-password-btn">
+                                Change
+                            </button>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Email Notifications</h4>
+                                <p>Manage email notification preferences</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="email-notifications" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>SMS Notifications</h4>
+                                <p>Receive SMS updates about your bookings</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="sms-notifications">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Privacy & Security</h3>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Profile Visibility</h4>
+                                <p>Control who can see your profile information</p>
+                            </div>
+                            <select id="profile-visibility">
+                                <option value="public">Public</option>
+                                <option value="private">Private</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-car"></i>
+                        <span>Rentify</span>
+                    </div>
+                    <p>Your trusted partner for premium car rental services. Experience comfort, reliability, and exceptional service.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="cars.html">Browse Cars</a></li>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Customer Service</a></li>
+                        <li><a href="#">Safety Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@rentify.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Car Rental St, City, State 12345</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rentify. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
